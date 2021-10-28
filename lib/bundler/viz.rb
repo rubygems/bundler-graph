@@ -3,7 +3,6 @@
 require "bundler/plugin/api"
 require_relative "graph"
 
-
 module Bundler
   class Viz < Plugin::API
 
