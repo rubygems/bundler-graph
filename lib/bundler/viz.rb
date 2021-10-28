@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-module Bundler
-  class CLI::Viz
-    attr_reader :options, :gem_name
-    def initialize(options)
-      @options = options
-    end
+require "bundler/plugin/api"
+require_relative "graph"
 
-    def run
+
+module Bundler
+  class Viz < Plugin::API
+
+    command "viz"
+
+    def exec(command, options)
       # make sure we get the right `graphviz`. There is also a `graphviz`
       # gem we're not built to support
       gem "ruby-graphviz"
