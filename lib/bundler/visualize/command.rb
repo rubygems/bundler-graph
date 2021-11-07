@@ -38,8 +38,7 @@ module Bundler
         require "graphviz"
       rescue Gem::LoadError => e
         raise unless e.name == "ruby-graphviz"
-        Bundler.ui.error "Make sure you have the graphviz ruby gem. You can install it with:"
-        Bundler.ui.error "`gem install ruby-graphviz`"
+        Bundler.ui.error "The graphviz ruby gem was not found. Install it with `gem install ruby-graphviz` and try again"
         exit 1
       end
 
