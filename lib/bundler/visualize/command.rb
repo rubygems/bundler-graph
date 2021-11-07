@@ -13,6 +13,8 @@ module Bundler
       end
 
       def exec(_command, args)
+        activate_graphviz_gem
+
         options = parse_options(args)
         options = defaults.merge(options)
 
@@ -28,6 +30,18 @@ module Bundler
       end
 
       private
+
+      def activate_graphviz_gem
+        # make sure we get the right `graphviz`. There is also a `graphviz`
+        # gem we're not built to support
+        gem "ruby-graphviz"
+        require "graphviz"
+      rescue Gem::LoadError => e
+        raise unless e.name == "ruby-graphviz"
+        Bundler.ui.error "Make sure you have the graphviz ruby gem. You can install it with:"
+        Bundler.ui.error "`gem install ruby-graphviz`"
+        exit 1
+      end
 
       def parse_options(args)
         options = {}
