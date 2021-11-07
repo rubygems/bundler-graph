@@ -2,7 +2,7 @@
 
 require "set"
 module Bundler
-  module Viz
+  module Visualize
     class Graph
       GRAPH_NAME = :Gemfile
 
@@ -24,7 +24,7 @@ module Bundler
 
       attr_reader :groups, :relations, :node_options, :edge_options, :output_file, :output_format
 
-      def viz
+      def visualize
         GraphVizClient.new(self).run
       end
 
@@ -137,7 +137,7 @@ module Bundler
 
           if @output_format.to_s == "debug"
             $stdout.puts g.output :none => String
-            Bundler.ui.info "debugging bundle viz..."
+            Bundler.ui.info "debugging bundle visualize..."
           else
             begin
               g.output @output_format.to_sym => "#{@output_file}.#{@output_format}"

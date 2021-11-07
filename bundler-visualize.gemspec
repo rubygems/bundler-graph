@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/bundler/viz/version"
+require_relative "lib/bundler/visualize/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "bundler-viz"
-  spec.version       = Bundler::Viz::VERSION
+  spec.name          = "bundler-visualize"
+  spec.version       = Bundler::Visualize::VERSION
   spec.authors       = ["Hiroshi SHIBATA"]
   spec.email         = ["hsbt@ruby-lang.org"]
 

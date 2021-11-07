@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in bundler-viz.gemspec
+# Specify your gem's dependencies in bundler-visualize.gemspec
 gemspec
 
 gem "rake", "~> 13.0"

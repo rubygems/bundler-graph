@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
+RSpec.describe "bundle visualize", :bundler => "< 3", :if => Bundler.which("dot") do
   let(:ruby_graphviz) do
     graphviz_glob = base_system_gems.join("cache/ruby-graphviz*")
     Pathname.glob(graphviz_glob).first
@@ -17,10 +17,10 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
       gem "rack-obama"
     G
 
-    bundle! "viz"
+    bundle! "visualize"
     expect(out).to include("gem_graph.png")
 
-    bundle! "viz", :format => "debug"
+    bundle! "visualize", :format => "debug"
     expect(out).to eq(strip_whitespace(<<-DOT).strip)
       digraph Gemfile {
       concentrate = "true";
@@ -36,7 +36,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
         default -> "rack-obama" [constraint = "false"];
         "rack-obama" -> rack;
       }
-      debugging bundle viz...
+      debugging bundle visualize...
     DOT
   end
 
@@ -51,10 +51,10 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
       gem "rack-obama"
     G
 
-    bundle! "viz"
+    bundle! "visualize"
     expect(out).to include("gem_graph.png")
 
-    bundle! "viz", :format => :debug, :version => true
+    bundle! "visualize", :format => :debug, :version => true
     expect(out).to eq(strip_whitespace(<<-EOS).strip)
       digraph Gemfile {
       concentrate = "true";
@@ -70,7 +70,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
         default -> "rack-obama" [constraint = "false"];
         "rack-obama" -> rack;
       }
-      debugging bundle viz...
+      debugging bundle visualize...
     EOS
   end
 
@@ -92,7 +92,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
         gem "rack-obama"
       G
 
-      bundle! "viz", :format => "debug"
+      bundle! "visualize", :format => "debug"
       expect(out).to eq(strip_whitespace(<<-DOT).strip)
         digraph Gemfile {
         concentrate = "true";
@@ -108,7 +108,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
           default -> "rack-obama" [constraint = "false"];
           "rack-obama" -> rack;
         }
-        debugging bundle viz...
+        debugging bundle visualize...
       DOT
     end
   end
@@ -124,7 +124,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
         end
       G
 
-      bundle! "viz --without=rails"
+      bundle! "visualize --without=rails"
       expect(out).to include("gem_graph.png")
     end
 
@@ -142,7 +142,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
         end
       G
 
-      bundle! "viz --without=rails:rack"
+      bundle! "visualize --without=rails:rack"
       expect(out).to include("gem_graph.png")
     end
   end

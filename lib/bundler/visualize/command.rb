@@ -6,7 +6,7 @@ require "bundler"
 require "optparse"
 
 module Bundler
-  module Viz
+  module Visualize
     class Command
       def initialize
         Bundler.ui = UI::Shell.new
@@ -19,7 +19,7 @@ module Bundler
         output_file = File.expand_path(options[:file])
 
         graph = Graph.new(Bundler.load, output_file, options[:version], options[:requirements], options[:format], options[:without])
-        graph.viz
+        graph.visualize
       rescue StandardError => e
         raise unless e.message =~ /GraphViz not installed or dot not in PATH/
 
