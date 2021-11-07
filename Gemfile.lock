@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bundler-viz (0.1.0)
+    bundler-visualize (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -11,9 +11,10 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
-  bundler-viz!
+  bundler-visualize!
   minitest (~> 5.0)
   rake (~> 13.0)
 
