@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative "lib/bundler/viz/version"
+require_relative "lib/bundler/graph/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "bundler-viz"
-  spec.version       = Bundler::Viz::VERSION
+  spec.name          = "bundler-graph"
+  spec.version       = Bundler::Graph::VERSION
   spec.authors       = ["Hiroshi SHIBATA"]
   spec.email         = ["hsbt@ruby-lang.org"]
 
   spec.summary       = ""
   spec.description   = ""
-  spec.homepage      = "https://github.com/rubygems/bundler-viz"
+  spec.homepage      = "https://github.com/rubygems/bundler-graph"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.4.0"
 

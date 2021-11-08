@@ -4,9 +4,9 @@ require "bundler/plugin/api"
 require_relative "graph"
 
 module Bundler
-  class Viz < Plugin::API
+  class GraphCLI < Plugin::API
 
-    command "viz"
+    command "graph"
 
     def exec(command, options)
       # make sure we get the right `graphviz`. There is also a `graphviz`

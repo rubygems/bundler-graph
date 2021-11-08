@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-require "bundler/viz"
+require_relative "lib/bundler/graph_cli"
