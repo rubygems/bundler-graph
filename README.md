@@ -1,5 +1,10 @@
 # Bundler Graph plugin
 
+`graph` generates a PNG file of the current `Gemfile` as a dependency graph.
+`graph` requires the ruby-graphviz gem (and its dependencies).
+
+The associated gems must also be installed via `bundle install`.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -15,7 +20,11 @@ And then execute:
 ## Usage
 
 ```
-bundle graph
+bundle graph [--file=FILE]
+             [--format=FORMAT]
+             [--requirements]
+             [--version]
+             [--without=GROUP GROUP]
 ```
 
 ## Development

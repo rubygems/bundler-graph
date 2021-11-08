@@ -23,11 +23,11 @@ module Bundler
         without: []
       }
       opt = OptionParser.new
-      opt.on('--file') {|v| options[:file] = v }
-      opt.on('--version') {|v| options[:version] = true }
-      opt.on('--requirements') {|v| options[:requirements] = true }
-      opt.on('--format') {|v| options[:format] = v }
-      opt.on('--without') {|v| options[:without] = v }
+      opt.on('-f', '--file', 'The name to use for the generated file. See `--format` option') {|v| options[:file] = v }
+      opt.on('-F', '--format', 'This is output format option. Supported format is png, jpg, svg, dot ...') {|v| options[:format] = v }
+      opt.on('-R', '--requirements', 'Set to show the version of each required dependency.') {|v| options[:requirements] = true }
+      opt.on('-v', '--version', 'Set to show each gem version.') {|v| options[:version] = true }
+      opt.on('-W', '--without', 'Exclude gems that are part of the specified named group.') {|v| options[:without] = v }
       opt.parse!(argv)
 
       options[:without] = options[:without].join(":").tr(" ", ":").split(":")

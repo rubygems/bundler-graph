@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Hiroshi SHIBATA"]
   spec.email         = ["hsbt@ruby-lang.org"]
 
-  spec.summary       = ""
-  spec.description   = ""
+  spec.summary       = "Generates a visual dependency graph for your Gemfile"
+  spec.description   = "`graph` generates a PNG file of the current `Gemfile(5)` as a dependency graph."
   spec.homepage      = "https://github.com/rubygems/bundler-graph"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.4.0"
