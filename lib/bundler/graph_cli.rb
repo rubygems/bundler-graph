@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "bundler/plugin/api"
+require "optparse"
 require_relative "graph"
 
 module Bundler
@@ -8,11 +9,26 @@ module Bundler
 
     command "graph"
 
-    def exec(command, options)
+    def exec(command, argv)
       # make sure we get the right `graphviz`. There is also a `graphviz`
       # gem we're not built to support
       gem "ruby-graphviz"
       require "graphviz"
+
+      options = {
+        file: "gem_graph",
+        format: "png",
+        requirements: false,
+        version: false,
+        without: []
+      }
+      opt = OptionParser.new
+      opt.on('--file') {|v| options[:file] = v }
+      opt.on('--version') {|v| options[:version] = true }
+      opt.on('--requirements') {|v| options[:requirements] = true }
+      opt.on('--format') {|v| options[:format] = v }
+      opt.on('--without') {|v| options[:without] = v }
+      opt.parse!(argv)
 
       options[:without] = options[:without].join(":").tr(" ", ":").split(":")
       output_file = File.expand_path(options[:file])
