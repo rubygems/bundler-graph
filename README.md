@@ -1,28 +1,22 @@
-# Bundler::Viz
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bundler/viz`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+# Bundler Graph plugin
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bundler-viz'
+plugin 'bundler-graph'
 ```
 
 And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install bundler-viz
-
 ## Usage
 
-TODO: Write usage instructions here
+```
+bundle graph
+```
 
 ## Development
 
@@ -32,7 +26,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/hsbt/bundler-viz.
+Bug reports and pull requests are welcome on GitHub at https://github.com/rubygems/bundler-graph.
 
 ## License
 
