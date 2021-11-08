@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
+RSpec.describe "bundle graph", :bundler => "< 3", :if => Bundler.which("dot") do
   let(:ruby_graphviz) do
     graphviz_glob = base_system_gems.join("cache/ruby-graphviz*")
     Pathname.glob(graphviz_glob).first
@@ -17,10 +17,10 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
       gem "rack-obama"
     G
 
-    bundle! "viz"
+    bundle! "graph"
     expect(out).to include("gem_graph.png")
 
-    bundle! "viz", :format => "debug"
+    bundle! "graph", :format => "debug"
     expect(out).to eq(strip_whitespace(<<-DOT).strip)
       digraph Gemfile {
       concentrate = "true";
@@ -51,10 +51,10 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
       gem "rack-obama"
     G
 
-    bundle! "viz"
+    bundle! "graph"
     expect(out).to include("gem_graph.png")
 
-    bundle! "viz", :format => :debug, :version => true
+    bundle! "graph", :format => :debug, :version => true
     expect(out).to eq(strip_whitespace(<<-EOS).strip)
       digraph Gemfile {
       concentrate = "true";
@@ -92,7 +92,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
         gem "rack-obama"
       G
 
-      bundle! "viz", :format => "debug"
+      bundle! "graph", :format => "debug"
       expect(out).to eq(strip_whitespace(<<-DOT).strip)
         digraph Gemfile {
         concentrate = "true";
@@ -124,7 +124,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
         end
       G
 
-      bundle! "viz --without=rails"
+      bundle! "graph --without=rails"
       expect(out).to include("gem_graph.png")
     end
 
@@ -142,7 +142,7 @@ RSpec.describe "bundle viz", :bundler => "< 3", :if => Bundler.which("dot") do
         end
       G
 
-      bundle! "viz --without=rails:rack"
+      bundle! "graph --without=rails:rack"
       expect(out).to include("gem_graph.png")
     end
   end
