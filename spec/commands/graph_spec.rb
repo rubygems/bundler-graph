@@ -17,12 +17,11 @@ RSpec.describe "bundle graph" do
   end
 
   let(:base_gemfile) do
-    bundler_graph_root = Pathname.new(__dir__).join("..").expand_path
+    bundler_graph_root = Pathname.new(__dir__).join("../..").expand_path
 
     <<~G.chomp
       source "https://rubygems.org"
-      plugin "bundler-graph", :git => #{bundler_graph_root.to_s.inspect}, :ref => "HEAD"
-      require File.join(Bundler::Plugin.index.load_paths("bundler-graph")[0], "bundler-graph") rescue nil
+      plugin "bundler-graph", :path => "#{bundler_graph_root.to_s}"
     G
   end
 
