@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'fileutils'
+require 'pathname'
+
 RSpec.describe "bundle graph" do
   before do
     @org_dir = Dir.pwd
