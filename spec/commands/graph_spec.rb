@@ -58,7 +58,7 @@ RSpec.describe "bundle graph" do
   it "graphs gems that are prereleases" do
     install_gemfile <<-G
       #{base_gemfile}
-      gem "rack", "= 1.3.pre"
+      gem "rack", "= 1.3.0.beta"
       gem "rack-obama"
     G
 
@@ -75,9 +75,9 @@ RSpec.describe "bundle graph" do
       node[ fontname  =  "Arial, Helvetica, SansSerif"];
       edge[ fontname  =  "Arial, Helvetica, SansSerif" , fontsize  =  "12"];
       default [style = "filled", fillcolor = "#B9B9D5", shape = "box3d", fontsize = "16", label = "default"];
-      rack [style = "filled", fillcolor = "#B9B9D5", label = "rack\\n1.3.pre"];
+      rack [style = "filled", fillcolor = "#B9B9D5", label = "rack\\n1.3.0.beta"];
         default -> rack [constraint = "false"];
-      "rack-obama" [style = "filled", fillcolor = "#B9B9D5", label = "rack-obama\\n1.0"];
+      "rack-obama" [style = "filled", fillcolor = "#B9B9D5", label = "rack-obama\\n0.1.1"];
         default -> "rack-obama" [constraint = "false"];
         "rack-obama" -> rack;
       }
