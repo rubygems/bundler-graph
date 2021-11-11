@@ -51,7 +51,7 @@ RSpec.describe "bundle graph" do
         default -> "rack-obama" [constraint = "false"];
         "rack-obama" -> rack;
       }
-      debugging bundle viz...
+      debugging bundle graph...
     DOT
   end
 
@@ -81,7 +81,7 @@ RSpec.describe "bundle graph" do
         default -> "rack-obama" [constraint = "false"];
         "rack-obama" -> rack;
       }
-      debugging bundle viz...
+      debugging bundle graph...
     EOS
   end
 
