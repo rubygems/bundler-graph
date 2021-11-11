@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "lib/bundler/graph/version"
-
 Gem::Specification.new do |spec|
   spec.name          = "bundler-graph"
-  spec.version       = Bundler::Graph::VERSION
+  spec.version       = "0.1.0"
   spec.authors       = ["Hiroshi SHIBATA"]
   spec.email         = ["hsbt@ruby-lang.org"]
 

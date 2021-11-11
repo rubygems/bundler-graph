@@ -2,7 +2,7 @@
 
 require "bundler/plugin/api"
 require "optparse"
-require_relative "graph"
+require_relative "dep_graph"
 
 module Bundler
   class GraphCLI < Plugin::API
@@ -20,20 +20,20 @@ module Bundler
         format: "png",
         requirements: false,
         version: false,
-        without: []
+        without: ""
       }
       opt = OptionParser.new
-      opt.on('-f', '--file', 'The name to use for the generated file. See `--format` option') {|v| options[:file] = v }
-      opt.on('-F', '--format', 'This is output format option. Supported format is png, jpg, svg, dot ...') {|v| options[:format] = v }
+      opt.on('-f', '--file FILE', 'The name to use for the generated file. See `--format` option') {|v| options[:file] = v }
+      opt.on('-F', '--format FORMAT', 'This is output format option. Supported format is png, jpg, svg, dot ...') {|v| options[:format] = v }
       opt.on('-R', '--requirements', 'Set to show the version of each required dependency.') {|v| options[:requirements] = true }
       opt.on('-v', '--version', 'Set to show each gem version.') {|v| options[:version] = true }
-      opt.on('-W', '--without', 'Exclude gems that are part of the specified named group.') {|v| options[:without] = v }
+      opt.on('-W', '--without GROUP[:GROUP...]', 'Exclude gems that are part of the specified named group.') {|v| options[:without] = v }
       opt.parse!(argv)
 
-      options[:without] = options[:without].join(":").tr(" ", ":").split(":")
+      options[:without] = options[:without].tr(" ", ":").split(":")
       output_file = File.expand_path(options[:file])
 
-      graph = Graph.new(Bundler.load, output_file, options[:version], options[:requirements], options[:format], options[:without])
+      graph = DepGraph.new(Bundler.load, output_file, options[:version], options[:requirements], options[:format], options[:without])
       graph.viz
     rescue LoadError => e
       Bundler.ui.error e.inspect

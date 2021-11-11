@@ -2,7 +2,7 @@
 
 require "set"
 module Bundler
-  class Graph
+  class DepGraph
     GRAPH_NAME = :Gemfile
 
     def initialize(env, output_file, show_version = false, show_requirements = false, output_format = "png", without = [])
