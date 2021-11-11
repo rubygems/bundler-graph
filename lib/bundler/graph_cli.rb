@@ -2,7 +2,7 @@
 
 require "bundler/plugin/api"
 require "optparse"
-require_relative "graph"
+require_relative "dep_graph"
 
 module Bundler
   class GraphCLI < Plugin::API
@@ -33,7 +33,7 @@ module Bundler
       options[:without] = options[:without].join(":").tr(" ", ":").split(":")
       output_file = File.expand_path(options[:file])
 
-      graph = Graph.new(Bundler.load, output_file, options[:version], options[:requirements], options[:format], options[:without])
+      graph = DepGraph.new(Bundler.load, output_file, options[:version], options[:requirements], options[:format], options[:without])
       graph.viz
     rescue LoadError => e
       Bundler.ui.error e.inspect
