@@ -19,5 +19,12 @@ module Spec
       end
       output
     end
+
+    # https://github.com/rubygems/rubygems/blob/master/bundler/spec/support/helpers.rb#L271
+    def strip_whitespace(str)
+      # Trim the leading spaces
+      spaces = str[/\A\s+/, 0] || ""
+      str.gsub(/^#{spaces}/, "")
+    end
   end
 end
