@@ -17,7 +17,7 @@ module Spec
 
         raise StandardError, "#{command} failed: #{output}" unless status.success?
       end
-      output
+      output.chomp
     end
 
     # https://github.com/rubygems/rubygems/blob/master/bundler/spec/support/helpers.rb#L271
