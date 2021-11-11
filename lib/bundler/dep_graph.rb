@@ -136,7 +136,7 @@ module Bundler
 
         if @output_format.to_s == "debug"
           $stdout.puts g.output :none => String
-          Bundler.ui.info "debugging bundle viz..."
+          Bundler.ui.info "debugging bundle graph..."
         else
           begin
             g.output @output_format.to_sym => "#{@output_file}.#{@output_format}"
